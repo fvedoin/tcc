@@ -1,0 +1,70 @@
+#page-login{
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
+
+#sign-up{
+    display: flex;
+    flex-flow: row wrap;
+    background: var(--color-primary-light);
+    height: 100vh;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+#sign-in{
+    display: flex;
+    flex-flow: row wrap;
+    background: var(--color-background);
+    height: 100vh;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+#hello-visitor{
+    margin-top: 100px;
+    color: var(--color-title-in-primary);
+}
+
+#sign-in-title{
+    margin-right: 200px;
+    margin-left: 200px;
+    margin-top: 60px;
+    color: var(--color-primary);
+}
+
+p{
+    margin-top: -200px;
+}
+
+input {
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+#input-user{
+    margin-top: -110px;
+}
+
+#input-password{
+    margin-top: -190px;
+}
+
+#sign-up-button{
+    margin-top: -300px;
+    color: var(--color-button-text);
+    border: 5px solid var(--color-secondary);
+    box-sizing: border-box;
+    background-color: transparent;
+}
+
+#sign-in-button{
+    margin-top: -200px;
+    color: var(--color-button-text);
+    border: 5px solid var(--color-secondary);
+    box-sizing: border-box;
+    background-color: var(--color-secondary);
+}
