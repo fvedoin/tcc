@@ -10,7 +10,7 @@ export async function up(knex: Knex) {
         ]).notNullable();
         table.enum('duration', [
             '6m', '6 a 12m', '13 a 18m', '19 a 24m', '25 a 30m', '31 a 36m', 'mais de 36m'
-        ]);
+        ]).notNullable();
     });
 }
 

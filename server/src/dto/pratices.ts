@@ -9,6 +9,10 @@ const pratices = [
     },
     {
         type: 'architecture modeling',
+        name: 'proved architecture early'
+    },
+    {
+        type: 'architecture modeling',
         name: 'evolutionary design'
     },
     {
@@ -20,16 +24,12 @@ const pratices = [
         name: 'gantt chart details'
     },
     {
-        type: 'architecture modeling',
+        type: 'traditional analysis',
         name: 'gantt chart high-level'
     },
     {
-        type: 'architecture modeling',
+        type: 'traditional analysis',
         name: 'architecture specification detailed'
-    },
-    {
-        type: 'architecture modeling',
-        name: 'proved architecture early'
     },
     {
         type: 'process/governance',
@@ -60,19 +60,19 @@ const pratices = [
         name: 'defect trend metrics'
     },
     {
-        type: 'database pratices',
+        type: 'database practices',
         name: 'continuous database integrations'
     },
     {
-        type: 'database pratices',
+        type: 'database practices',
         name: 'database testing'
     },
     {
-        type: 'database pratices',
+        type: 'database practices',
         name: 'database refactoring'
     },
     {
-        type: 'database pratices',
+        type: 'database practices',
         name: 'data naming conventions'
     },
     {
