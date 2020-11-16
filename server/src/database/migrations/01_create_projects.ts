@@ -4,6 +4,7 @@ export async function up(knex: Knex) {
     return knex.schema.createTable('projects', table => {
         table.increments('id').primary();
         table.string('name').notNullable();
+        table.date('start_date').notNullable();
         table.enum('type', [
             'new software development', 'software enhancement', 'customization of commercial-off-the-shelf software', 'outsoursed software development',
             'software integration', 'system migration', 'enterprise-resource-planning implementation', 'other'
