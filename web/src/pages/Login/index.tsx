@@ -7,9 +7,11 @@ function Login() {
     return (
         <div id="page-login">
             <section id="sign-up">
-                <h1 id="hello-visitor">Hello, visitor!</h1>
-                <p>Enter your details and start the journey!</p>
-                <button id="sign-up-button">Sign Up</button>
+                <div>
+                    <h1 id="hello-visitor">Hello, visitor!</h1>
+                    <p>Enter your details and start the journey!</p>
+                </div>
+                <button id="sign-up-button">Sign Up</button>   
             </section>            
             <section id="sign-in">
                 <h1 id="sign-in-title">Sign In</h1>

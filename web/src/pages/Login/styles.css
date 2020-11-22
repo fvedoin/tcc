@@ -5,8 +5,8 @@
 }
 
 #sign-up{
+    flex-direction: column;
     display: flex;
-    flex-flow: row wrap;
     background: var(--color-primary-light);
     height: 100vh;
     width: 50%;
@@ -15,54 +15,39 @@
 }
 
 #sign-in{
+    flex-direction: column;
     display: flex;
-    flex-flow: row wrap;
-    background: var(--color-background);
     height: 100vh;
     width: 50%;
     align-items: center;
     justify-content: center;
-}
-
-#hello-visitor{
-    margin-top: 100px;
-    color: var(--color-title-in-primary);
-}
-
-#sign-in-title{
-    margin-right: 200px;
-    margin-left: 200px;
-    margin-top: 60px;
-    color: var(--color-primary);
-}
-
-p{
-    margin-top: -200px;
+    background: var(--color-background);
 }
 
 input {
-    margin-left: 200px;
-    margin-right: 200px;
+    margin-bottom: 24px;
+    width: 500px;
 }
 
-#input-user{
-    margin-top: -110px;
+#hello-visitor{
+    color: var(--color-title-in-primary);
+    margin-bottom: 24px;
 }
 
-#input-password{
-    margin-top: -190px;
+#sign-in-title{
+    color: var(--color-primary);
+    margin-bottom: 24px;
 }
 
 #sign-up-button{
-    margin-top: -300px;
     color: var(--color-button-text);
     border: 5px solid var(--color-secondary);
     box-sizing: border-box;
     background-color: transparent;
+    margin-top: 48px;
 }
 
 #sign-in-button{
-    margin-top: -200px;
     color: var(--color-button-text);
     border: 5px solid var(--color-secondary);
     box-sizing: border-box;
