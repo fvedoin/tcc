@@ -10,7 +10,7 @@ export async function up(knex: Knex) {
             'software integration', 'system migration', 'enterprise-resource-planning implementation', 'other'
         ]).notNullable();
         table.enum('duration', [
-            '6m', '6 a 12m', '13 a 18m', '19 a 24m', '25 a 30m', '31 a 36m', 'mais de 36m'
+            '6m', '6 to 12m', '13 to 18m', '19 to 24m', '25 to 30m', '31 to 36m', 'more than 36m'
         ]).notNullable();
     });
 }
