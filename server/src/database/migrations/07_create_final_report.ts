@@ -11,8 +11,8 @@ export async function up(knex: Knex) {
         table.integer('team_satisfaction ').notNullable();
         table.integer('customer_satisfaction').notNullable();
         table.integer('intention_to_use').notNullable();
-        table.integer('final_budget').notNullable();
-        table.integer('final_time').notNullable();
+        table.integer('on_budget').notNullable();
+        table.integer('on_time').notNullable();
         table.integer('system_quality').notNullable();
         table.integer('information_quality').notNullable();
         table.integer('business_impact').notNullable();
