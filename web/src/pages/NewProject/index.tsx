@@ -129,14 +129,14 @@ function NewProject() {
                                     <select className="first-select" onChange={e => setRiskPraticeItemValue(index, 'risk_id', e.target.value)}>
                                         <option value="">Select a risk factor</option>
                                         {risks.map(risk => (
-                                            <option value={risk.id}>{risk.name}</option>
+                                            <option key={risk.id} value={risk.id}>{risk.name}</option>
                                         ))}
                                     </select>
                                     <select onChange={e => setRiskPraticeItemValue(index, 'pratice_id', e.target.value)}>
                                         <option value="">Select a pratice</option>
                                         <optgroup label="Firefox">
                                             {pratices.map(pratice => (
-                                                <option value={pratice.id}>{pratice.name.charAt(0).toUpperCase() + pratice.name.slice(1)}</option>
+                                                <option key={pratice.id} value={pratice.id}>{pratice.name.charAt(0).toUpperCase() + pratice.name.slice(1)}</option>
                                             ))}
                                             <option value="">Select a pratice</option>
                                         </optgroup>                   

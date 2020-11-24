@@ -21,7 +21,7 @@ export default class ProjectsController {
             duration,
             risksPratices,
         } = req.body;
-    
+
         const trx = await db.transaction();
     
         try {
@@ -51,8 +51,12 @@ export default class ProjectsController {
             await trx.rollback();
     
             return res.status(400).json({
-                error: 'Unexpected error while creating new class'
+                error: 'Unexpected error while creating new project'
             });
         }
+    }
+
+    async update() {
+        
     }
 }

@@ -52,6 +52,7 @@ form {
 }
 
 .step-item {
+    border: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -90,7 +91,19 @@ form {
     background-color: var(--color-secondary);
 }
 
+label {
+    align-self: flex-start;
+    margin-bottom: 8px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 42px;
 
+    color: #145374;
+
+    opacity: 0.5;
+}
 
 .slider {
     padding: 0px;
