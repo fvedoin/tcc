@@ -64,10 +64,7 @@ p {
     color: var(--color-text-complement);
 }
 
-input,
-button,
-select,
-textarea {
+button {
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
@@ -75,16 +72,20 @@ textarea {
     font-size: 24px;
     line-height: 42px;
     background: var(--color-input-background);
-}
-
-button {
     width: 320px;
     height: 80px;
     cursor: pointer;
     border-radius: 64px;
 }
 
-input, select {
+.form-input {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    border-radius: 8px;
+    font-size: 24px;
+    line-height: 42px;
+    background: var(--color-input-background);
     min-width: 400px;
     padding: 16px 20px;
     border: 1px solid var(--color-input-border);

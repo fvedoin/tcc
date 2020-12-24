@@ -1,4 +1,4 @@
-import React, { useState, useEffect, MouseEvent } from 'react';
+import React, { useState, MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
@@ -53,7 +53,7 @@ function FinishProject() {
 
     return (
         <div id="page-new-project">
-            <h1 id="page-title">New Project</h1>
+            <h1 id="page-title">Finish Project</h1>
             <section id="content">
                 <div id="steps">
                     <button className={step >= 1 ? 'step-item step-item-active' : 'step-item'} onClick={() => {(step > 1 && setStep(1))}}>1</button>
@@ -67,39 +67,39 @@ function FinishProject() {
                         <>
                             <h2>Project Management</h2>
                             <label>Scope/Specification</label>
-                            <input className="slider" type="range" min={0} max={100} value={scope_specifications} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setScopeSpecificatoins(Number(e.currentTarget.value))} />
+                            <input className="slider" type="range" min={0} max={10} value={scope_specifications} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setScopeSpecificatoins(Number(e.currentTarget.value))} />
 
                             <label>Process efficiency</label>
-                            <input className="slider" type="range" min={0} max={100} value={process_efficiency} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setProcessEfficiency(Number(e.currentTarget.value))} />
+                            <input className="slider" type="range" min={0} max={10} value={process_efficiency} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setProcessEfficiency(Number(e.currentTarget.value))} />
 
                             <label>Goal achievement</label>
-                            <input className="slider" type="range" min={0} max={100} value={goal_achievement} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setGoalAchievement(Number(e.currentTarget.value))} />
+                            <input className="slider" type="range" min={0} max={10} value={goal_achievement} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setGoalAchievement(Number(e.currentTarget.value))} />
 
                             <label>Quality of project management</label>
-                            <input className="slider" type="range" min={0} max={100} value={project_management_quality} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQualityProjectManagement(Number(e.currentTarget.value))} />
+                            <input className="slider" type="range" min={0} max={10} value={project_management_quality} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQualityProjectManagement(Number(e.currentTarget.value))} />
 
                             <label>Project Stakeholder Satisfaction</label>
-                            <input className="slider" type="range" min={0} max={100} value={stakeholder_satisfaction} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setStakeholderSatisfaction(Number(e.currentTarget.value))} />
+                            <input className="slider" type="range" min={0} max={10} value={stakeholder_satisfaction} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setStakeholderSatisfaction(Number(e.currentTarget.value))} />
 
 
                             <label>Team is satisfied</label>
-                            <input className="slider" type="range" min={0} max={100} value={team_satisfaction} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTeamSatisfaction(Number(e.currentTarget.value))} />
+                            <input className="slider" type="range" min={0} max={10} value={team_satisfaction} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTeamSatisfaction(Number(e.currentTarget.value))} />
                         </>
                     ) : (step === 2) ? (
                         <>
                             <h2>User Satisfaction</h2>
                             <label>User/Customer satisfaction</label>
-                            <input className="slider" type="range" min={0} max={100} value={customer_satisfaction} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUserCustomerSatisfaction(Number(e.currentTarget.value))} />
+                            <input className="slider" type="range" min={0} max={10} value={customer_satisfaction} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUserCustomerSatisfaction(Number(e.currentTarget.value))} />
 
                             <label>Intention to use</label>
-                            <input className="slider" type="range" min={0} max={100} value={intention_to_use} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setIntentionToUse(Number(e.currentTarget.value))} />
+                            <input className="slider" type="range" min={0} max={10} value={intention_to_use} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setIntentionToUse(Number(e.currentTarget.value))} />
                            
                             <h2>Time & Budget</h2>
                             <label>On budget</label>
-                            <input className="slider" type="range" min={0} max={100} value={on_budget} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setOnBudget(Number(e.currentTarget.value))} />
+                            <input className="slider" type="range" min={0} max={10} value={on_budget} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setOnBudget(Number(e.currentTarget.value))} />
 
                             <label>On time</label>
-                            <input className="slider" type="range" min={0} max={100} value={on_time} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setOnTime(Number(e.currentTarget.value))} />
+                            <input className="slider" type="range" min={0} max={10} value={on_time} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setOnTime(Number(e.currentTarget.value))} />
                            
                         </>
                     ) : (

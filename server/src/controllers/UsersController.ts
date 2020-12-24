@@ -1,19 +1,16 @@
 import { Request, Response } from 'express';
+import md5 from 'md5';
 
 import db from '../database/connection';
 
 export default class UsersController {
-    async index (req: Request, res: Response) {
-        const users = await db('users').select();
-
-        return res.json({ users });
-    }
-
     async create(req: Request, res: Response) {
-        const { name, email, profile } = req.body;
+        const { name, email, password, profile } = req.body;
+
+        var hash = md5(password);
 
         await db('users').insert({
-            name, email, profile
+            name, email, password: hash, profile
         });
 
         return res.status(201).send();
