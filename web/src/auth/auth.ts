@@ -2,7 +2,6 @@ export const TOKEN_KEY = '@tcc-token';
 export const CURRENT_USER = '@current-User';
 
 export const isAuthenticated = () => {
-    console.log(localStorage.getItem(TOKEN_KEY) !== null);
     return localStorage.getItem(TOKEN_KEY) !== null;
 };
 

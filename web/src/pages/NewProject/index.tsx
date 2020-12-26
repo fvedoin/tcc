@@ -14,6 +14,7 @@ function NewProject() {
     const [pratices, setPratices] = useState<Pratices[]>([]);
     
     const [name, setName] = useState('');
+    const [team, setTeam] = useState('');
     const [start_date, setStartDate] = useState('');
     const [type, setType] = useState('');
     const [duration, setDuration] = useState('');
@@ -43,7 +44,8 @@ function NewProject() {
                 start_date,
                 type,
                 duration,
-                risksPratices
+                risksPratices,
+                users: team.trim().split(',')
             }).then(response => {
                 console.log(response);
             });
@@ -82,18 +84,21 @@ function NewProject() {
                         <>
                             <h2>General Infos</h2>
                             <input
+                                className="form-input"
                                 type="text"
                                 placeholder="Name"
                                 value={name}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.currentTarget.value)}
                             />
                             <input
+                                className="form-input"
                                 type="date"
                                 placeholder="Start date"
                                 value={start_date}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setStartDate(e.currentTarget.value)}
                             />
                             <select
+                                className="form-input"
                                 value={type}
                                 onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setType(e.currentTarget.value)}
                             >
@@ -108,6 +113,7 @@ function NewProject() {
                                 <option value="other">Other</option>
                             </select>
                             <select
+                                className="form-input"
                                 value={duration}
                                 onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setDuration(e.currentTarget.value)}
                             >
@@ -120,19 +126,26 @@ function NewProject() {
                                 <option value="31 to 36m">31 to 36m</option>
                                 <option value="more than 36m">more than 36m</option>
                             </select>
+                            <input
+                                className="form-input"
+                                type="text"
+                                placeholder="Team"
+                                value={team}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTeam(e.currentTarget.value)}
+                            />
                         </>
                     ) : (
                         <>
                         {risksPratices.map((item, index) => {
                             return(
                                 <div className="select-group" key={index.toString()}>
-                                    <select className="first-select" onChange={e => setRiskPraticeItemValue(index, 'risk_id', e.target.value)}>
+                                    <select className="first-select form-input" onChange={e => setRiskPraticeItemValue(index, 'risk_id', e.target.value)}>
                                         <option value="">Select a risk factor</option>
                                         {risks.map(risk => (
                                             <option key={risk.id} value={risk.id}>{risk.name}</option>
                                         ))}
                                     </select>
-                                    <select onChange={e => setRiskPraticeItemValue(index, 'pratice_id', e.target.value)}>
+                                    <select className="form-input" onChange={e => setRiskPraticeItemValue(index, 'pratice_id', e.target.value)}>
                                         <option value="">Select a pratice</option>
                                         <optgroup label="Firefox">
                                             {pratices.map(pratice => (
