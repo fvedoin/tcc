@@ -1,5 +1,4 @@
-import React, { useState, useEffect, MouseEvent } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import DataTable, {IDataTableColumn} from 'react-data-table-component';
 import api from '../../services/api';
 

@@ -1,5 +1,4 @@
 import React, { useState, MouseEvent } from 'react';
-import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
 

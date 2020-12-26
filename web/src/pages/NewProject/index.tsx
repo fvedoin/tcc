@@ -1,5 +1,4 @@
 import React, { useState, useEffect, MouseEvent } from 'react';
-import { Link } from 'react-router-dom';
 
 import { Pratices } from '../../dto/pratices';
 import { Risks } from '../../dto/risks';

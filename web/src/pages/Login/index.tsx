@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {useHistory} from 'react-router-dom';
-import { Link } from 'react-router-dom';
 
 import {login} from '../../auth/auth';
 import api from '../../services/api';

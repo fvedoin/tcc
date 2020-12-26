@@ -15,7 +15,14 @@ interface ProjectUser {
 
 export default class ProjectsController {
     async index (req: Request, res: Response) {
-        const projects = await db('projects').select();
+        const authHeader = req.headers['authorization'];
+        const token = authHeader && authHeader.split(' ')[1];
+
+        const currentUser: any = await decodeToken(String(token));
+
+        const projects = await db('projects').select('*')
+            .join('projects_users', 'projects_users.project_id', 'projects.id')
+            .where('projects_users.user_id', '=', currentUser.id)
         
         return res.json(projects);
     }
