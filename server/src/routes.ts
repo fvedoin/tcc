@@ -32,9 +32,10 @@ routes.get('/projects', projectsController.index);
 routes.get('/projects/:id/pratices', praticesController.getByProject);
 
 routes.get('/projects/:id/relation', risksPraticesController.getByProject);
+routes.post('/projects/:id/relation', risksPraticesController.add);
 
 //Search pratices in the project
-routes.put('/relation/:id', risksPraticesController.update);
+routes.put('/relation/:id/remove', risksPraticesController.remove);
 
 //Finish project
 routes.post('/finish-project', finalReportController.create);

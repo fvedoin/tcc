@@ -1,4 +1,4 @@
-import React, { useState, useEffect, MouseEvent } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import DataTable, {IDataTableColumn} from 'react-data-table-component';
 
@@ -13,8 +13,11 @@ function EditProjectPratices() {
     const { id } = useParams();
 
     const [columns, setColumns] = useState<IDataTableColumn[]>([]);
+    const [reload, setReload] = useState(false);
     const [risks, setRisks] = useState<Risks[]>([]);
     const [pratices, setPratices] = useState<Pratices[]>([]);
+    const [risk_id, setRiskId] = useState('');
+    const [pratice_id, setPraticeId] = useState('');
 
     const [risksPratices, setRiskPratice] = useState<any[]>([]);
 
@@ -54,37 +57,50 @@ function EditProjectPratices() {
                 {
                   name: 'Added On',
                   selector: 'added_on',
-                  sortable: true
+                  sortable: true,
+                  format: (row, rowIndex) => <>{new Date(response.data[rowIndex].added_on).toDateString()}</>
                 },
                 {
                   name: 'Removed On',
                   selector: 'removed_on',
                   sortable: true,
-                  wrap: true
+                  wrap: true,
+                  format: (row, rowIndex) => <>{response.data[rowIndex].removed_on && (new Date(response.data[rowIndex].removed_on).toDateString())}</>
                 },{
                     name: '',
                     selector: 'id',
                     sortable: true,
                     width: '72px',
-                    format: (row, rowIndex) => <button style={{
-                        height: 24,
-                        width: 24
-                    }} onClick={() => {
-                        api.put(`/relation/${response.data[rowIndex].id}`).then(response => {
-                            risksPratices[rowIndex].removed_on = new Date();
+                    format: (row, rowIndex) => <button className="minus-button"
+                    disabled={response.data[rowIndex].removed_on ? true : false}
+                    onClick={() => {
+                        api.put(`/relation/${response.data[rowIndex].id}/remove`).then(response => {
+                            setReload(!reload);
                         });
                     }}>-</button>
                 },
             ]);
         });
-    }, []);
+    }, [reload]);
+
+    async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+
+        await api.post(`projects/${id}/relation`, {
+            risk_id, pratice_id
+        }).then(response => {
+            window.location.reload();
+        }).catch(e => {
+            console.log(e);
+        })
+    }
 
     return (
-        <div id="page-new-project">
-            <h1 id="page-title">Risk Factors and Pratices</h1>
+        <div id="page-project-pratices">
+            <h1 id="page-title">Project details</h1>
             <div className="content">
                 <DataTable
-                        title="Projects"
+                        title="Risk Factors and Pratices"
                         columns={columns}
                         data={risksPratices}
                         responsive={true}
@@ -122,6 +138,26 @@ function EditProjectPratices() {
                             }
                         }}
                     />
+            </div>
+            <div id="content-below">
+            <div className="select-group">
+                <form onSubmit={handleSubmit}>
+                    <select className="first-select form-input" onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setRiskId(e.currentTarget.value)}>
+                        <option value="">Select a risk factor</option>
+                        {risks.map(risk => (
+                            <option key={risk.id} value={risk.id}>{risk.name}</option>
+                        ))}
+                    </select>
+                    <select className="form-input" onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setPraticeId(e.currentTarget.value)}>
+                        <option value="">Select a pratice</option>
+                        {pratices.map(pratice => (
+                            <option key={pratice.id} value={pratice.id}>{pratice.name.charAt(0).toUpperCase() + pratice.name.slice(1)}</option>
+                        ))}
+                        <option value="">Select a pratice</option>                  
+                    </select>
+                    <button id="submit" type="submit">Add</button>
+                </form>
+            </div>
             </div>
         </div>
     );

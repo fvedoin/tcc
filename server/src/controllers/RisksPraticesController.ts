@@ -14,12 +14,28 @@ export default class RisksPraticesController {
         return res.json(data);
     }
 
-    async update (req: Request, res: Response) {
+    async remove (req: Request, res: Response) {
         const { id } = req.params;
 
         const updated = await db('projects_risks_pratices').where('id', '=', id)
             .update({'removed_on': new Date()});
 
         return res.json(updated);
+    }
+
+    async add (req: Request, res: Response) {
+        const { id } = req.params;
+
+        const {risk_id, pratice_id} = req.body;
+
+        const risk_pratice = {
+            risk_id,
+            pratice_id,
+            project_id: id 
+        }          
+
+        await db('projects_risks_pratices').insert(risk_pratice);
+
+        return res.json(risk_pratice);
     }
 }

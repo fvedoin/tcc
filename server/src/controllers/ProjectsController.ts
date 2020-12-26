@@ -68,7 +68,6 @@ export default class ProjectsController {
 
             for await (let email of users) {
                 var user = await trx('users').select('id').where('email', '=', email.trim()).first();
-                console.log(user.id);
                 project_users.push({user_id: user.id, project_id});
             };
 
