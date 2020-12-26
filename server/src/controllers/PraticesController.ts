@@ -8,4 +8,10 @@ export default class PraticesController {
 
         return res.json({ pratices });
     }
+
+    async getByProject (req: Request, res: Response) {
+        const pratices = await db('pratices').select();
+
+        return res.json({ pratices });
+    }
 }
