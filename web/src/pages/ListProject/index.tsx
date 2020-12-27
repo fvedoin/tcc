@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import DataTable, {IDataTableColumn} from 'react-data-table-component';
+import { Link, useHistory } from 'react-router-dom';
+
+import { logout } from '../../auth/auth';
 import api from '../../services/api';
 
 import './styles.css';
@@ -7,6 +10,8 @@ import './styles.css';
 function ListProject() {
     const [columns, setColumns] = useState<IDataTableColumn[]>([]);
     const [projects, setProjects] = useState<any[]>([]);
+
+    const history = useHistory();
 
     useEffect(() => {
         api.get('projects').then(response => {
@@ -39,13 +44,26 @@ function ListProject() {
                   selector: 'type',
                   sortable: true,
                   wrap: true 
-                }
+                },
+                {
+                    name: '',
+                    selector: 'id',
+                    sortable: true,
+                    width: '72px',
+                    format: (row, rowIndex) => <Link to={`/project/${response.data[rowIndex].id}/pratices`}>go</Link>
+                },
             ]);
         });
     }, []);
 
+    async function handleLogout() {
+        logout();
+        history.push('/');
+    }
+
     return (
         <div id="page-list-project">
+            <button onClick={handleLogout}>Sair</button>
             <h1 id="page-title">Project List</h1>
             <div className="content">
                 <DataTable

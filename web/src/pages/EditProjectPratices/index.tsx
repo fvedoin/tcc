@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import DataTable, {IDataTableColumn} from 'react-data-table-component';
 
 import { Pratices } from '../../dto/pratices';
@@ -78,7 +78,13 @@ function EditProjectPratices() {
                             setReload(!reload);
                         });
                     }}>-</button>
-                },
+                },{
+                    name: '',
+                    selector: 'id',
+                    sortable: true,
+                    width: '72px',
+                    format: (row, rowIndex) => <Link to={`/pratices/${response.data[rowIndex].id}/comments`}>go</Link>
+                }
             ]);
         });
     }, [reload]);
