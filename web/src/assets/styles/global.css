@@ -78,6 +78,11 @@ button {
     border-radius: 64px;
 }
 
+#page-title{
+    color: var(--color-primary);
+    margin-bottom: 24px;
+}
+
 .form-input {
     font-family: Roboto;
     font-style: normal;

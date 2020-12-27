@@ -6,11 +6,6 @@
     justify-content: center;
 }
 
-#page-title{
-    color: var(--color-primary);
-    margin-bottom: 24px;
-}
-
 input, select {
     margin-bottom: 24px;
     width: 500px;

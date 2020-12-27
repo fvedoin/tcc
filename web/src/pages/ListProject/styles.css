@@ -6,11 +6,6 @@
     justify-content: center;
 }
 
-#page-title{
-    color: var(--color-primary);
-    margin-bottom: 24px;
-}
-
 #content {
     padding: 24px 0;
     display: flex;
