@@ -9,6 +9,7 @@ import ListProject from './pages/ListProject';
 import NewProject from './pages/NewProject';
 import NewUser from './pages/NewUser';
 import EditProjectPratices from './pages/EditProjectPratices';
+import Comments from './pages/Comments';
 
 //Here, the private routes are defined
 const PrivateRoute:React.FC<{component: any, path: string}> = ({ component: Component, path }) => (
@@ -33,6 +34,7 @@ const Routes = () => (
             <PrivateRoute component={FinishProject} path="/finish/project" />
             <PrivateRoute component={ListProject} path="/list/project" />
             <PrivateRoute component={EditProjectPratices} path="/project/:id/pratices" />
+            <PrivateRoute component={Comments} path="/pratices/:id/comments" />
             <Route path="*" component={() => <h1>Page not found</h1>} />
         </Switch>
     </BrowserRouter>

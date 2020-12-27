@@ -1,5 +1,6 @@
 import express from 'express';
 
+import CommentsController from './controllers/CommentsController';
 import FinalReportController from './controllers/FinalReportController';
 import PraticesController from './controllers/PraticesController';
 import ProjectsController from './controllers/ProjectsController';
@@ -10,6 +11,7 @@ import UsersController from './controllers/UsersController';
 
 const routes = express.Router();
 
+const commentsController = new CommentsController();
 const usersController = new UsersController();
 const projectsController = new ProjectsController();
 const finalReportController = new FinalReportController();
@@ -39,6 +41,9 @@ routes.put('/relation/:id/remove', risksPraticesController.remove);
 
 //Finish project
 routes.post('/finish-project', finalReportController.create);
+
+//Create comment
+routes.post('/comments', commentsController.create);
 
 //Select all pratices
 routes.get('/pratices', praticesController.index);
