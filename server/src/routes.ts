@@ -39,6 +39,9 @@ routes.post('/projects/:id/relation', risksPraticesController.add);
 //Search pratices in the project
 routes.put('/relation/:id/remove', risksPraticesController.remove);
 
+//Search comments in the relation
+routes.get('/relation/:id/comments', commentsController.getByRelation);
+
 //Finish project
 routes.post('/finish-project', finalReportController.create);
 
