@@ -17,7 +17,7 @@ export async function up(knex: Knex) {
         table.integer('information_quality').notNullable();
         table.integer('business_impact').notNullable();
         table.integer('impact_on_users').notNullable();
-        table.integer('project_id').unsigned();
+        table.integer('project_id').unsigned().unique();
         table.foreign('project_id').references('risks_classification.id');
     });
 
