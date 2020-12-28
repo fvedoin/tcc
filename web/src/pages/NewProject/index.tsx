@@ -1,4 +1,5 @@
 import React, { useState, useEffect, MouseEvent } from 'react';
+import { useToasts } from 'react-toast-notifications';
 
 import { Pratices } from '../../dto/pratices';
 import { Risks } from '../../dto/risks';
@@ -8,6 +9,8 @@ import api from '../../services/api';
 import './styles.css';
 
 function NewProject() {
+    const { addToast } = useToasts();
+
     const [step, setStep] = useState(1);
     const [risks, setRisks] = useState<Risks[]>([]);
     const [pratices, setPratices] = useState<Pratices[]>([]);
@@ -46,7 +49,15 @@ function NewProject() {
                 risksPratices,
                 users: team.trim().split(',')
             }).then(response => {
-                console.log(response);
+                addToast('Project registered successfully!', {
+                    appearance: 'success',
+                    autoDismiss: true,
+                });
+            }).catch(e => {
+                addToast('Project cannot be registered.', {
+                    appearance: 'error',
+                    autoDismiss: true,
+                });
             });
         }
     }

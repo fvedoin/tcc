@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import DataTable, {IDataTableColumn} from 'react-data-table-component';
+import { useToasts } from 'react-toast-notifications';
+import { FaComments } from 'react-icons/fa';
 
 import { Pratices } from '../../dto/pratices';
 import { Risks } from '../../dto/risks';
@@ -10,6 +12,7 @@ import api from '../../services/api';
 import './styles.css';
 
 function EditProjectPratices() {
+    const { addToast } = useToasts();
     const { id } = useParams();
 
     const [columns, setColumns] = useState<IDataTableColumn[]>([]);
@@ -76,6 +79,15 @@ function EditProjectPratices() {
                     onClick={() => {
                         api.put(`/relation/${response.data[rowIndex].id}/remove`).then(response => {
                             setReload(!reload);
+                            addToast('Pratice removed from the project successfully!', {
+                                appearance: 'success',
+                                autoDismiss: true,
+                            });
+                        }).catch(e => {
+                            addToast('Pratice cannot be removed from the project.', {
+                                appearance: 'error',
+                                autoDismiss: true,
+                            });
                         });
                     }}>-</button>
                 },{
@@ -83,7 +95,7 @@ function EditProjectPratices() {
                     selector: 'id',
                     sortable: true,
                     width: '72px',
-                    format: (row, rowIndex) => <Link to={`/pratices/${response.data[rowIndex].id}/comments`}>go</Link>
+                    format: (row, rowIndex) => <Link className="minus-button" to={`/pratices/${response.data[rowIndex].id}/comments`}><FaComments /></Link>
                 }
             ]);
         });
@@ -95,10 +107,17 @@ function EditProjectPratices() {
         await api.post(`projects/${id}/relation`, {
             risk_id, pratice_id
         }).then(response => {
+            addToast('Pratice added to the project successfully!', {
+                appearance: 'success',
+                autoDismiss: true,
+            });
             window.location.reload();
         }).catch(e => {
-            console.log(e);
-        })
+            addToast('Pratice cannot be added to the project.', {
+                appearance: 'error',
+                autoDismiss: true,
+            });
+        });
     }
 
     return (

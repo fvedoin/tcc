@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DataTable, {IDataTableColumn} from 'react-data-table-component';
+import { FaSitemap, FaStop } from 'react-icons/fa';
 import { Link, useHistory } from 'react-router-dom';
 
 import { logout } from '../../auth/auth';
@@ -50,7 +51,14 @@ function ListProject() {
                     selector: 'id',
                     sortable: true,
                     width: '72px',
-                    format: (row, rowIndex) => <Link to={`/project/${response.data[rowIndex].id}/pratices`}>go</Link>
+                    format: (row, rowIndex) => <Link className="minus-button" to={`/project/${response.data[rowIndex].id}/pratices`}><FaSitemap /></Link> 
+                },
+                {
+                    name: '',
+                    selector: 'id',
+                    sortable: true,
+                    width: '72px',
+                    format: (row, rowIndex) => <Link className="minus-button" to={`/project/${response.data[rowIndex].id}/finish`}><FaStop /></Link> 
                 },
             ]);
         });

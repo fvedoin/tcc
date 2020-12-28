@@ -31,7 +31,7 @@ const Routes = () => (
             <Route component={Login} path="/" exact />
             <Route component={NewUser} path="/new/user" />
             <PrivateRoute component={NewProject} path="/new/project" />
-            <PrivateRoute component={FinishProject} path="/finish/project" />
+            <PrivateRoute component={FinishProject} path="/project/:id/finish" />
             <PrivateRoute component={ListProject} path="/list/project" />
             <PrivateRoute component={EditProjectPratices} path="/project/:id/pratices" />
             <PrivateRoute component={Comments} path="/pratices/:id/comments" />

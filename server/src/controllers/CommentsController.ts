@@ -15,22 +15,34 @@ export default class CommentsController {
     }
 
     async create (req: Request, res: Response) {
-        const authHeader = req.headers['authorization'];
-        const token = authHeader && authHeader.split(' ')[1];
+        try {
+            const authHeader = req.headers['authorization'];
+            const token = authHeader && authHeader.split(' ')[1];
 
-        const currentUser: any = await decodeToken(String(token));
+            const currentUser: any = await decodeToken(String(token));
 
-    
-        const {comment, project_risk_pratice_id} = req.body;
+        
+            const {comment, project_risk_pratice_id} = req.body;
 
-        const commentData = {
-            comment,
-            project_risk_pratice_id,
-            user_id: currentUser.id 
-        }          
+            if(comment === '') {
+                return res.status(400).json({
+                    error: 'Unexpected error while creating new comment'
+                });
+            }
 
-        await db('comments').insert(commentData);
+            const commentData = {
+                comment,
+                project_risk_pratice_id,
+                user_id: currentUser.id 
+            };
 
-        return res.json(commentData);
+            await db('comments').insert(commentData);
+
+            return res.json(commentData);
+        } catch (err) {
+            return res.status(400).json({
+                error: 'Unexpected error while creating new comment'
+            });
+        }
     }
 }

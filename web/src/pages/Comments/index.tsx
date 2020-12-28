@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useToasts } from 'react-toast-notifications';
 
 import api from '../../services/api';
 
 import './styles.css';
 
 function Comments() {
+    const { addToast } = useToasts();
     const { id } = useParams();
 
     const [comment, setComment] = useState('');
@@ -26,8 +28,11 @@ function Comments() {
         }).then(response => {
             window.location.reload();
         }).catch(e => {
-            console.log(e);
-        })
+            addToast('Comment cannot be registered.', {
+                appearance: 'error',
+                autoDismiss: true,
+            });
+        });
     }
 
     return (

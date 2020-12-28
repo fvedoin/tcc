@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {Link, useHistory} from 'react-router-dom';
+import { useToasts } from 'react-toast-notifications';
 
 import {login} from '../../auth/auth';
 import api from '../../services/api';
@@ -7,6 +8,8 @@ import api from '../../services/api';
 import './styles.css';
 
 function Login() {
+    const { addToast } = useToasts();
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -19,7 +22,10 @@ function Login() {
             login(response.data.token, response.data.currentUser);
             history.push('/list/project');
         }).catch(e => {
-            console.log(e);
+            addToast('Incorrect credentials.', {
+                appearance: 'error',
+                autoDismiss: true,
+            });
         })
 
     }

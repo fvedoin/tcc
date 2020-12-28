@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useToasts } from 'react-toast-notifications';
 
 import api from '../../services/api';
 
 import './styles.css';
 
 function NewUser() {
+    const { addToast } = useToasts();
+
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -19,7 +22,15 @@ function NewUser() {
             password,
             profile
         }).then(response => {
-            console.log('bombou');
+            addToast('User registered successfully!', {
+                appearance: 'success',
+                autoDismiss: true,
+            });
+        }).catch(e => {
+            addToast('User cannot be registered.', {
+                appearance: 'error',
+                autoDismiss: true,
+            });
         });
     }
 
