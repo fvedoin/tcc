@@ -64,6 +64,15 @@ p {
     color: var(--color-text-complement);
 }
 
+li {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 40px;
+    color: var(--color-text-complement);
+}
+
 button {
     font-family: Roboto;
     font-style: normal;

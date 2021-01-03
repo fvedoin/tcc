@@ -10,7 +10,11 @@ export default class PraticesController {
     }
 
     async getByProject (req: Request, res: Response) {
-        const pratices = await db('pratices').select();
+        const { id } = req.params;
+
+        const pratices = await db('pratices').select('*')
+            .join('projects_risks_pratices', 'projects_risks_pratices.pratice_id', 'pratices.id')
+            .where('projects_risks_pratices.project_id', '=', id);
 
         return res.json({ pratices });
     }

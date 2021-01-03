@@ -7,6 +7,7 @@ import ProjectsController from './controllers/ProjectsController';
 import RisksController from './controllers/RisksController';
 import RisksPraticesController from './controllers/RisksPraticesController';
 import SessionsController from './controllers/SessionController';
+import SuccessFactorPratice from './controllers/SuccessFactorPraticeController';
 import UsersController from './controllers/UsersController';
 
 const routes = express.Router();
@@ -19,6 +20,7 @@ const praticesController = new PraticesController();
 const sessionController = new SessionsController();
 const risksController = new RisksController();
 const risksPraticesController = new RisksPraticesController();
+const successFactorPratice = new SuccessFactorPratice();
 
 //Create users
 routes.post('/users', usersController.create);
@@ -39,11 +41,17 @@ routes.post('/projects/:id/relation', risksPraticesController.add);
 //Finish project
 routes.post('/projects/:id/finish', finalReportController.create);
 
+//Get report
+routes.get('/projects/:id/report', finalReportController.getByProject);
+
 //Search pratices in the project
 routes.put('/relation/:id/remove', risksPraticesController.remove);
 
 //Search comments in the relation
 routes.get('/relation/:id/comments', commentsController.getByRelation);
+
+routes.post('/final-report/pratices', successFactorPratice.create);
+routes.get('/final-report/:reportId/pratices/:successFactor', successFactorPratice.getByFinalReport);
 
 //Create comment
 routes.post('/comments', commentsController.create);

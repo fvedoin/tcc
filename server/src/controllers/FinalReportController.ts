@@ -5,6 +5,7 @@ import db from '../database/connection';
 export default class FinalReportController {
 
     async create (req: Request, res: Response) {
+        const { id } = req.params;
         const {
             scope_specifications,
             process_efficiency,
@@ -23,8 +24,8 @@ export default class FinalReportController {
         } = req.body;
     
         try {
-            const insertedReportsIds = await db('final_reports').insert({
-                project_id: 1,
+            const insertedIds = await db('final_reports').insert({
+                project_id: id,
                 scope_specifications,
                 process_efficiency,
                 goal_achievement,
@@ -49,7 +50,13 @@ export default class FinalReportController {
         }
     }
 
-    async update() {
-        
+    async getByProject (req: Request, res: Response) {
+        const { id } = req.params;
+
+        const report = await db('final_reports').select('*')
+            .where('project_id', '=', id)
+            .first();
+
+        return res.json({ report });
     }
 }

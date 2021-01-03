@@ -48,9 +48,15 @@ function FinishProject() {
                 on_budget,
                 on_time
             };
+
             api.post(`projects/${id}/finish`, body).then((response) => {
-                addToast('História cadastrada com sucesso', {
+                addToast('Project finished successfully!', {
                     appearance: 'success',
+                    autoDismiss: true,
+                });
+            }).catch(e => {
+                addToast('Project cannot be finished.', {
+                    appearance: 'error',
                     autoDismiss: true,
                 });
             });
