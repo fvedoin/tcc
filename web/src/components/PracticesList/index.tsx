@@ -15,7 +15,6 @@ const PracticesList: React.FC<Props> = ({ reportId, successFactor, ...rest }) =>
         if(reportId && successFactor){
             api.get(`final-report/${reportId}/practices/${successFactor}`).then(response => {
                 setPractices(response.data);
-                console.log(response.data);
             });
         }
     }, [reportId, successFactor]);

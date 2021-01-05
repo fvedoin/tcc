@@ -83,7 +83,6 @@ export default class ProjectsController {
             return res.status(201).send();
         } catch (err) {
             await trx.rollback();
-            console.log(err);
             return res.status(400).json({
                 error: 'Unexpected error while creating new project'
             });

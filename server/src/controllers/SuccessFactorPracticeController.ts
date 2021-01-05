@@ -11,10 +11,6 @@ export default class FinalReportController {
             success_factor
         } = req.body;
 
-        console.log({practice_id: Number(practice_id),
-            final_report_id: Number(report_id),
-            success_factor})
-
         if(!practice_id){
             return res.status(400).json({
                 error: 'A practice is required.'
