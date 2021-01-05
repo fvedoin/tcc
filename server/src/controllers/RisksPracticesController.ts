@@ -19,7 +19,7 @@ export default class RisksPracticesController {
 
         try {
             const updated = await db('projects_risks_practices').where('id', '=', id)
-                .update({'removed_on': new Date()});
+                .update({'removed_on': db.fn.now()});
 
             return res.json(updated);
         }  catch (err) {

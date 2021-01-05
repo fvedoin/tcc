@@ -44,7 +44,7 @@ export default class FinalReportController {
             });
 
             const updated = await trx('projects').where('id', '=', id)
-                .update({'end_date': new Date()});
+                .update({'end_date': db.fn.now()});
         
             await trx.commit();
             
