@@ -21,4 +21,14 @@ export default class UsersController {
             });
         }
     }
+
+    async getByProject (req: Request, res: Response) {
+        const { id } = req.params;
+
+        const users = await db('users').select('*')
+            .join('projects_users', 'projects_users.user_id', 'users.id')
+            .where('projects_users.project_id', '=', id);
+
+        return res.json({ users });
+    }
 }

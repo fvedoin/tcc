@@ -18,4 +18,17 @@ export default class PraticesController {
 
         return res.json({ pratices });
     }
+
+    async getByRisk (req: Request, res: Response) {
+        const { id } = req.params;
+
+        const pratices = await db('pratices').count('pratices.name', {as: 'occurrence'})
+            .select('pratices.name')
+            .join('projects_risks_pratices', 'projects_risks_pratices.pratice_id', 'pratices.id')
+            .where('projects_risks_pratices.risk_id', '=', id)
+            .groupBy('pratices.name')
+            .orderByRaw('occurrence desc');
+
+        return res.json({ pratices });
+    }
 }

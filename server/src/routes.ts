@@ -34,6 +34,7 @@ routes.get('/projects', projectsController.index);
 
 //Search project by id
 routes.get('/projects/:id/pratices', praticesController.getByProject);
+routes.get('/projects/:id/users', usersController.getByProject);
 
 routes.get('/projects/:id/relation', risksPraticesController.getByProject);
 routes.post('/projects/:id/relation', risksPraticesController.add);
@@ -58,6 +59,8 @@ routes.post('/comments', commentsController.create);
 
 //Select all pratices
 routes.get('/pratices', praticesController.index);
+
+routes.get('/risks/:id/pratices', praticesController.getByRisk);
 
 //Select all risks
 routes.get('/risks', risksController.index);
