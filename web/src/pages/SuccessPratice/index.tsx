@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { Pratices } from '../../dto/pratices';
 
 import api from '../../services/api';
 
 function SuccessPratice() {
-    const [projects, setProjects] = useState<any[]>([]);
     const { id, successFactor } = useParams();
 
     const [pratices, setPratices] = useState<Pratices[]>([]);

@@ -63,6 +63,31 @@ function NewProject() {
     }
 
     function setRiskPraticeItemValue(position: number, field: string, value: string) {
+        if(field === 'risk_id') {
+            const risk = risks.filter(item => {
+                return item.id === Number(value);
+            });
+            api.get(`/risks/${value}/pratices`).then(response => {
+                var usedPratices = '';
+                response.data.pratices.map((item: any, index: number) => {
+                    if(index !== response.data.pratices.length-1){
+                        usedPratices += `(${index+1}º) ${item.name}, `;
+                    } else {
+                        usedPratices += `(${index+1}º) ${item.name}.`;
+                    }                    
+                });
+                addToast(`Used pratices for ${risk[0].name}: ${usedPratices}`, {
+                    appearance: 'info',
+                    autoDismiss: false,
+                });
+            }).catch(e => {
+                addToast('Pratices cannot be loaded.', {
+                    appearance: 'error',
+                    autoDismiss: true,
+                });
+            });
+        }
+
         const updatedScheduleItems = risksPratices.map((scheduleItem, index) => {
             if(index === position) {
                 return {...scheduleItem, [field]: value};

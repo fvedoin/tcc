@@ -44,12 +44,14 @@ function Login() {
                     <input
                         className="form-input"
                         placeholder="Email"
+                        type="email"
                         id="input-user"
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.currentTarget.value)}
                     />
                     <input
                         className="form-input"
                         placeholder="Password"
+                        type="password"
                         id="input-password"
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.currentTarget.value)}
                     />
