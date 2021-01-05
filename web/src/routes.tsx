@@ -8,10 +8,11 @@ import FinishProject from './pages/FinishProject';
 import ListProject from './pages/ListProject';
 import NewProject from './pages/NewProject';
 import NewUser from './pages/NewUser';
-import EditProjectPratices from './pages/EditProjectPratices';
+import EditProjectPractices from './pages/EditProjectPractices';
 import Comments from './pages/Comments';
-import SuccessPratice from './pages/SuccessPratice';
+
 import ProjectUsers from './pages/ProjectUsers';
+import SuccessPractice from './pages/SuccessPractice';
 
 //Here, the private routes are defined
 const PrivateRoute:React.FC<{component: any, path: string}> = ({ component: Component, path }) => (
@@ -35,10 +36,10 @@ const Routes = () => (
             <PrivateRoute component={NewProject} path="/new/project" />
             <PrivateRoute component={FinishProject} path="/project/:id/finish" />
             <PrivateRoute component={ListProject} path="/list/project" />
-            <PrivateRoute component={EditProjectPratices} path="/project/:id/pratices" />
+            <PrivateRoute component={EditProjectPractices} path="/project/:id/practices" />
             <PrivateRoute component={ProjectUsers} path="/project/:id/users" />
-            <PrivateRoute component={Comments} path="/pratices/:id/comments" />
-            <PrivateRoute component={SuccessPratice} path="/report/:id/factor/:successFactor" />
+            <PrivateRoute component={Comments} path="/practices/:id/comments" />
+            <PrivateRoute component={SuccessPractice} path="/report/:id/project/:projectId/factor/:successFactor" />
             <Route path="*" component={() => <h1>Page not found</h1>} />
         </Switch>
     </BrowserRouter>

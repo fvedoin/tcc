@@ -1,8 +1,8 @@
 import Knex from 'knex';
-import pratices from '../../dto/pratices';
+import practices from '../../dto/practices';
 
 export async function up(knex: Knex) {
-    return await knex.schema.createTable('pratices', table => {
+    return await knex.schema.createTable('practices', table => {
         table.increments('id').primary();
         table.enum('type', [
             'architecture modeling', 'traditional analysis', 'process/governance', 'database practices', 'communication (team) - whiteboard practices',
@@ -12,11 +12,11 @@ export async function up(knex: Knex) {
         ]).notNullable();
         table.string('name').notNullable();
         }).then(function () {
-            return knex("pratices").insert(pratices);
+            return knex("practices").insert(practices);
         });
 
 }
 
 export async function down(knex: Knex) {
-    return knex.schema.dropTable('pratices');
+    return knex.schema.dropTable('practices');
 }

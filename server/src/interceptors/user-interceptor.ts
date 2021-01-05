@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { decodeToken } from '../auth/auth';
 
 const userInterceptor = async function (req: Request, res: Response, next: NextFunction) {
-    if (req.url.includes("/projects") || req.url.includes("/relation") || req.url.includes("/comments") || req.url.includes("/risks") || req.url.includes("/pratices")) {
+    if (req.url.includes("/projects") || req.url.includes("/relation") || req.url.includes("/comments") || req.url.includes("/risks") || req.url.includes("/practices")) {
         //Get the token from request header
         const authHeader = req.headers['authorization'];
         const token = authHeader && authHeader.split(' ')[1];

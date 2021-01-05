@@ -3,9 +3,9 @@ import { Request, Response } from 'express';
 import {decodeToken} from '../auth/auth';
 import db from '../database/connection';
 
-interface RiskPratice {
+interface RiskPractice {
     risk_id: number,
-    pratice_id: number
+    practice_id: number
 }
 
 interface ProjectUser {
@@ -33,7 +33,7 @@ export default class ProjectsController {
             start_date,
             type,
             duration,
-            risksPratices,
+            risksPractices,
             users
         } = req.body;
 
@@ -54,15 +54,15 @@ export default class ProjectsController {
         
             const project_id = insertedProjectsIds[0];
                
-            const risks_pratices = risksPratices.map((item: RiskPratice) => {
+            const risks_practices = risksPractices.map((item: RiskPractice) => {
                 return {
                     risk_id: item.risk_id,
-                    pratice_id: item.pratice_id,
+                    practice_id: item.practice_id,
                     project_id                    
                 };
             });
 
-            await trx('projects_risks_pratices').insert(risks_pratices);
+            await trx('projects_risks_practices').insert(risks_practices);
         
             let project_users: ProjectUser[] = [];
 

@@ -25,7 +25,7 @@ function Comments() {
         e.preventDefault();
 
         await api.post('comments', {
-            comment, project_risk_pratice_id: id
+            comment, project_risk_practice_id: id
         }).then(response => {
             window.location.reload();
         }).catch(e => {
@@ -37,7 +37,7 @@ function Comments() {
     }
 
     return (
-        <div id="page-project-pratices">
+        <div id="page-project-practices">
             <LogoutButton />
             <h1 id="page-title">Comments</h1>
             <section className="comment-sections">

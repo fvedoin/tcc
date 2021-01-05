@@ -5,10 +5,10 @@ export async function up(knex: Knex) {
         table.increments('id').primary();
         table.date('commented_on').defaultTo(knex.fn.now());
         table.integer('user_id').unsigned();
-        table.integer('project_risk_pratice_id').unsigned();
+        table.integer('project_risk_practice_id').unsigned();
         table.string('comment').notNullable();
         table.foreign('user_id').references('projects_users.user_id');
-        table.foreign('project_risk_pratice_id').references('project_risk_pratice.id');
+        table.foreign('project_risk_practice_id').references('project_risk_practice.id');
     });
 }
 

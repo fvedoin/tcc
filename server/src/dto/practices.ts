@@ -1,4 +1,4 @@
-const pratices = [
+const practices = [
     {
         type: 'architecture modeling',
         name: 'initial agile architectural modelling'
@@ -225,4 +225,4 @@ const pratices = [
     },
 ];
 
-export default pratices;
+export default practices;

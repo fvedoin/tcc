@@ -39,7 +39,7 @@ function ListProject() {
                     name: 'End date',
                     selector: 'end_date',
                     sortable: true,
-                    format: (row, rowIndex) => new Date(response.data[rowIndex].end_date).toDateString()
+                    format: (row, rowIndex) => response.data[rowIndex].end_date && new Date(response.data[rowIndex].end_date).toDateString()
                 },
                 {
                   name: 'Duration',
@@ -57,14 +57,14 @@ function ListProject() {
                     selector: 'id',
                     sortable: true,
                     width: '72px',
-                    format: (row, rowIndex) => <Link className="minus-button" to={`/project/${response.data[rowIndex].id}/pratices`}><FaSitemap /></Link> 
+                    format: (row, rowIndex) => <Link className="minus-button" to={`/project/${response.data[rowIndex].id}/practices`}><FaSitemap /></Link> 
                 },
                 {
                     name: '',
                     selector: 'id',
                     sortable: true,
                     width: '72px',
-                    format: (row, rowIndex) => <Link className="minus-button" to={`/project/${response.data[rowIndex].id}/finish`}><FaStop /></Link> 
+                    format: (row, rowIndex) => response.data[rowIndex].end_date ? (<button className="minus-button" disabled><FaStop size="14" /></button>) : (<Link className="minus-button" to={`/project/${response.data[rowIndex].id}/finish`}><FaStop /></Link>)
                 },
                 {
                     name: '',

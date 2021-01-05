@@ -2,7 +2,7 @@ import React, { useState, useEffect, MouseEvent } from 'react';
 import { useToasts } from 'react-toast-notifications';
 import LogoutButton from '../../components/LogoutButton';
 
-import { Pratices } from '../../dto/pratices';
+import { Practices } from '../../dto/practices';
 import { Risks } from '../../dto/risks';
 
 import api from '../../services/api';
@@ -14,15 +14,15 @@ function NewProject() {
 
     const [step, setStep] = useState(1);
     const [risks, setRisks] = useState<Risks[]>([]);
-    const [pratices, setPratices] = useState<Pratices[]>([]);
+    const [practices, setPractices] = useState<Practices[]>([]);
     
     const [name, setName] = useState('');
     const [team, setTeam] = useState('');
     const [start_date, setStartDate] = useState('');
     const [type, setType] = useState('');
     const [duration, setDuration] = useState('');
-    const [risksPratices, setRiskPratice] = useState([
-        {risk_id: 0, pratice_id: 0}
+    const [risksPractices, setRiskPractice] = useState([
+        {risk_id: 0, practice_id: 0}
     ]);
 
     useEffect(() => {
@@ -32,8 +32,8 @@ function NewProject() {
     }, []);
 
     useEffect(() => {
-        api.get('/pratices').then((response) => {
-            setPratices(response.data.pratices);
+        api.get('/practices').then((response) => {
+            setPractices(response.data.practices);
         });
     }, []);
 
@@ -47,7 +47,7 @@ function NewProject() {
                 start_date,
                 type,
                 duration,
-                risksPratices,
+                risksPractices,
                 users: team.trim().split(',')
             }).then(response => {
                 addToast('Project registered successfully!', {
@@ -63,48 +63,48 @@ function NewProject() {
         }
     }
 
-    function setRiskPraticeItemValue(position: number, field: string, value: string) {
+    function setRiskPracticeItemValue(position: number, field: string, value: string) {
         if(field === 'risk_id') {
             const risk = risks.filter(item => {
                 return item.id === Number(value);
             });
-            api.get(`/risks/${value}/pratices`).then(response => {
-                if(response.data.pratices.length > 0){
-                    var usedPratices = '';
-                    response.data.pratices.map((item: any, index: number) => {
-                        if(index !== response.data.pratices.length-1){
-                            usedPratices += `(${index+1}º) ${item.name}, `;
+            api.get(`/risks/${value}/practices`).then(response => {
+                if(response.data.practices.length > 0){
+                    var usedPractices = '';
+                    response.data.practices.map((item: any, index: number) => {
+                        if(index !== response.data.practices.length-1){
+                            usedPractices += `(${index+1}º) ${item.name}, `;
                         } else {
-                            usedPratices += `(${index+1}º) ${item.name}.`;
+                            usedPractices += `(${index+1}º) ${item.name}.`;
                         }                    
                     });
-                    addToast(`Used pratices for ${risk[0].name}: ${usedPratices}`, {
+                    addToast(`Used practices for ${risk[0].name}: ${usedPractices}`, {
                         appearance: 'info',
                         autoDismiss: false,
                     });
                 }                
             }).catch(e => {
-                addToast('Pratices cannot be loaded.', {
+                addToast('Practices cannot be loaded.', {
                     appearance: 'error',
                     autoDismiss: true,
                 });
             });
         }
 
-        const updatedScheduleItems = risksPratices.map((scheduleItem, index) => {
+        const updatedScheduleItems = risksPractices.map((scheduleItem, index) => {
             if(index === position) {
                 return {...scheduleItem, [field]: value};
             }
             return scheduleItem;
         });
 
-        setRiskPratice(updatedScheduleItems);
+        setRiskPractice(updatedScheduleItems);
     }
 
-    function addNewRiskPratice() {
-        setRiskPratice([
-            ...risksPratices,
-            { risk_id: 0, pratice_id: 0}
+    function addNewRiskPractice() {
+        setRiskPractice([
+            ...risksPractices,
+            { risk_id: 0, practice_id: 0}
         ]);
     }
 
@@ -175,29 +175,29 @@ function NewProject() {
                         </>
                     ) : (
                         <>
-                        {risksPratices.map((item, index) => {
+                        {risksPractices.map((item, index) => {
                             return(
                                 <div className="select-group" key={index.toString()}>
-                                    <select className="first-select form-input" onChange={e => setRiskPraticeItemValue(index, 'risk_id', e.target.value)}>
+                                    <select className="first-select form-input" onChange={e => setRiskPracticeItemValue(index, 'risk_id', e.target.value)}>
                                         <option value="">Select a risk factor</option>
                                         {risks.map(risk => (
                                             <option key={risk.id} value={risk.id}>{risk.name}</option>
                                         ))}
                                     </select>
-                                    <select className="form-input" onChange={e => setRiskPraticeItemValue(index, 'pratice_id', e.target.value)}>
-                                        <option value="">Select a pratice</option>
+                                    <select className="form-input" onChange={e => setRiskPracticeItemValue(index, 'practice_id', e.target.value)}>
+                                        <option value="">Select a practice</option>
                                         <optgroup label="Firefox">
-                                            {pratices.map(pratice => (
-                                                <option key={pratice.id} value={pratice.id}>{pratice.name.charAt(0).toUpperCase() + pratice.name.slice(1)}</option>
+                                            {practices.map(practice => (
+                                                <option key={practice.id} value={practice.id}>{practice.name.charAt(0).toUpperCase() + practice.name.slice(1)}</option>
                                             ))}
-                                            <option value="">Select a pratice</option>
+                                            <option value="">Select a practice</option>
                                         </optgroup>                   
                                     </select>
                                 </div>
                             );
                         })}
                             
-                            <button type="button" id="add-button" onClick={addNewRiskPratice}>+</button>
+                            <button type="button" id="add-button" onClick={addNewRiskPractice}>+</button>
                         </>
                     )}
                     

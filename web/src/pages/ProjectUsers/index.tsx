@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import DataTable, {IDataTableColumn} from 'react-data-table-component';
 import { useToasts } from 'react-toast-notifications';
 
@@ -39,11 +39,16 @@ function ProjectUsers() {
                   sortable: true
                 }
             ]);
+        }).catch(e =>{
+            addToast('Users cannot be fetched.', {
+                appearance: 'error',
+                autoDismiss: true,
+            });
         });
     }, []);
 
     return (
-        <div id="page-project-pratices">
+        <div id="page-project-practices">
             <h1 id="page-title">Project details</h1>
             <div className="content">
                 <DataTable

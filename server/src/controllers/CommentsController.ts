@@ -9,7 +9,7 @@ export default class CommentsController {
 
         const data = await db('comments').select('comments.*', 'users.name')
             .join('users', 'users.id', 'comments.user_id')
-            .where('project_risk_pratice_id', '=', id);
+            .where('project_risk_practice_id', '=', id);
 
         return res.json(data);
     }
@@ -22,7 +22,7 @@ export default class CommentsController {
             const currentUser: any = await decodeToken(String(token));
 
         
-            const {comment, project_risk_pratice_id} = req.body;
+            const {comment, project_risk_practice_id} = req.body;
 
             if(comment === '') {
                 return res.status(400).json({
@@ -32,7 +32,7 @@ export default class CommentsController {
 
             const commentData = {
                 comment,
-                project_risk_pratice_id,
+                project_risk_practice_id,
                 user_id: currentUser.id 
             };
 
