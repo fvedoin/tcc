@@ -43,13 +43,9 @@ export default class FinalReportController {
                 on_time
             });
 
-            console.log(insertedIds);
-
             const updated = await trx('projects').where('id', '=', id)
                 .update({'end_date': new Date()});
         
-            console.log(updated);
-
             await trx.commit();
             
             return res.status(201).send();
