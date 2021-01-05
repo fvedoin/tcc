@@ -3,7 +3,7 @@ import Knex from 'knex';
 export async function up(knex: Knex) {
     return knex.schema.createTable('comments', table => {
         table.increments('id').primary();
-        table.date('commented_on').defaultTo(new Date());
+        table.date('commented_on').defaultTo(knex.fn.now());
         table.integer('user_id').unsigned();
         table.integer('project_risk_pratice_id').unsigned();
         table.string('comment').notNullable();

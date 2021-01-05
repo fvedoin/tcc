@@ -6,7 +6,7 @@ export async function up(knex: Knex) {
         table.integer('pratice_id').unsigned();
         table.integer('project_id').unsigned();
         table.integer('risk_id').unsigned();
-        table.date('added_on').defaultTo(new Date());
+        table.date('added_on').defaultTo(knex.fn.now());
         table.date('removed_on');
         table.foreign('pratice_id').references('pratices.id');
         table.foreign('project_id').references('projects.id');
