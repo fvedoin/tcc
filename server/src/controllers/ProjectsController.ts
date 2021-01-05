@@ -90,7 +90,4 @@ export default class ProjectsController {
         }
     }
 
-    async update() {
-        
-    }
 }

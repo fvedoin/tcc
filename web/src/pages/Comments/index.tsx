@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications';
+import LogoutButton from '../../components/LogoutButton';
 
 import api from '../../services/api';
 
@@ -37,17 +38,24 @@ function Comments() {
 
     return (
         <div id="page-project-pratices">
+            <LogoutButton />
             <h1 id="page-title">Comments</h1>
             <section className="comment-sections">
-                {comments.map(item => (
-                    <div key={item.id} className="comment-group">
-                        <p className="comment-date">[{new Date(item.commented_on).toDateString()}]</p>
-                        <div>
-                            <p className="comment-author">{item.name}</p>
-                            <p>{item.comment}</p>
-                        </div>
-                    </div>
-                ))}
+                {comments.length === 0 ? (
+                    <p>No comments about it.</p>
+                ) : (
+                    <>
+                        {comments.map(item => (
+                            <div key={item.id} className="comment-group">
+                                <p className="comment-date">[{new Date(item.commented_on).toDateString()}]</p>
+                                <div>
+                                    <p className="comment-author">{item.name}</p>
+                                    <p>{item.comment}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </>
+                )}
             </section>
             <section className="comment-sections">
                 <form onSubmit={handleSubmit}>

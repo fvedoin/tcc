@@ -32,7 +32,14 @@ function ListProject() {
                 {
                     name: 'Start date',
                     selector: 'start_date',
-                    sortable: true
+                    sortable: true,
+                    format: (row, rowIndex) => new Date(response.data[rowIndex].start_date).toDateString()
+                },
+                {
+                    name: 'End date',
+                    selector: 'end_date',
+                    sortable: true,
+                    format: (row, rowIndex) => new Date(response.data[rowIndex].end_date).toDateString()
                 },
                 {
                   name: 'Duration',

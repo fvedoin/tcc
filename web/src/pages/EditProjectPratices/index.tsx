@@ -12,6 +12,7 @@ import api from '../../services/api';
 import './styles.css';
 import { report } from 'process';
 import PraticesList from '../../components/PraticesList';
+import LogoutButton from '../../components/LogoutButton';
 
 function EditProjectPratices() {
     const { addToast } = useToasts();
@@ -137,6 +138,7 @@ function EditProjectPratices() {
 
     return (
         <div id="page-project-pratices">
+            <LogoutButton />
             <h1 id="page-title">Project details</h1>
             <div className="content">
                 <DataTable

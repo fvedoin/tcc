@@ -22,9 +22,10 @@ export default class FinalReportController {
             on_budget,
             on_time
         } = req.body;
-    
+        const trx = await db.transaction();
+        
         try {
-            const insertedIds = await db('final_reports').insert({
+            const insertedIds = await trx('final_reports').insert({
                 project_id: id,
                 scope_specifications,
                 process_efficiency,
@@ -41,9 +42,19 @@ export default class FinalReportController {
                 on_budget,
                 on_time
             });
+
+            console.log(insertedIds);
+
+            const updated = await trx('projects').where('id', '=', id)
+                .update({'end_date': new Date()});
         
+            console.log(updated);
+
+            await trx.commit();
+            
             return res.status(201).send();
-        } catch (err) {    
+        } catch (err) {  
+            await trx.rollback();  
             return res.status(400).json({
                 error: 'Unexpected error while creating new final report'
             });
