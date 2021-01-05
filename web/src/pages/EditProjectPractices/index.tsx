@@ -233,7 +233,7 @@ function EditProjectPractices() {
                         <div className="factor-practices">
                             <div className="factor-header">
                                 <p>Impact on Users: {report?.impact_on_users}</p>
-                                <Link to={`/report/${report?.id}/factor/impact_on_users`}>Add Practice</Link>
+                                <Link to={`/report/${report?.id}/project/${id}/factor/impact_on_users`}>Add Practice</Link>
                             </div>                            
                             <div className="practices-list">
                                 <PracticesList successFactor="impact_on_users" reportId={report?.id} />
@@ -242,7 +242,7 @@ function EditProjectPractices() {
                         <div className="factor-practices">
                             <div className="factor-header">
                                 <p>Information Quality: {report?.information_quality}</p>
-                                <Link to={`/report/${report?.id}/factor/information_quality`}>Add Practice</Link>
+                                <Link to={`/report/${report?.id}/project/${id}/factor/information_quality`}>Add Practice</Link>
                             </div>
                             <div className="practices-list">
                                 <PracticesList successFactor="information_quality" reportId={report?.id} />
@@ -251,7 +251,7 @@ function EditProjectPractices() {
                         <div className="factor-practices">
                             <div className="factor-header">
                                 <p>Intention to Use: {report?.intention_to_use}</p>
-                                <Link to={`/report/${report?.id}/factor/intention_to_use`}>Add Practice</Link>
+                                <Link to={`/report/${report?.id}/project/${id}/factor/intention_to_use`}>Add Practice</Link>
                             </div>
                             <div className="practices-list">
                                 <PracticesList successFactor="intention_to_use" reportId={report?.id} />
@@ -260,7 +260,7 @@ function EditProjectPractices() {
                         <div className="factor-practices">
                             <div className="factor-header">
                                 <p>On Budget: {report?.on_budget}</p>
-                                <Link to={`/report/${report?.id}/factor/on_budget`}>Add Practice</Link>
+                                <Link to={`/report/${report?.id}/project/${id}/factor/on_budget`}>Add Practice</Link>
                             </div>
                             <div className="practices-list">
                                 <PracticesList successFactor="on_budget" reportId={report?.id} />
@@ -269,7 +269,7 @@ function EditProjectPractices() {
                         <div className="factor-practices">
                             <div className="factor-header">
                                 <p>On Time: {report?.on_time}</p>
-                                <Link to={`/report/${report?.id}/factor/on_time`}>Add Practice</Link>
+                                <Link to={`/report/${report?.id}/project/${id}/factor/on_time`}>Add Practice</Link>
                             </div>
                             <div className="practices-list">
                                 <PracticesList successFactor="on_time" reportId={report?.id} />
@@ -278,7 +278,7 @@ function EditProjectPractices() {
                         <div className="factor-practices">
                             <div className="factor-header">
                                 <p>Process Efficiency: {report?.process_efficiency}</p>
-                                <Link to={`/report/${report?.id}/factor/process_efficiency`}>Add Practice</Link>
+                                <Link to={`/report/${report?.id}/project/${id}/factor/process_efficiency`}>Add Practice</Link>
                             </div>
                             <div className="practices-list">
                                 <PracticesList successFactor="process_efficiency" reportId={report?.id} />
@@ -287,7 +287,7 @@ function EditProjectPractices() {
                         <div className="factor-practices">
                             <div className="factor-header">
                                 <p>Project Management Quality: {report?.project_management_quality}</p>
-                                <Link to={`/report/${report?.id}/factor/project_management_quality`}>Add Practice</Link>
+                                <Link to={`/report/${report?.id}/project/${id}/factor/project_management_quality`}>Add Practice</Link>
                             </div>
                             <div className="practices-list">
                                 <PracticesList successFactor="project_management_quality" reportId={report?.id} />
@@ -296,7 +296,7 @@ function EditProjectPractices() {
                         <div className="factor-practices">
                             <div className="factor-header">
                                 <p>Scope Specifications: {report?.scope_specifications}</p>
-                                <Link to={`/report/${report?.id}/factor/scope_specifications`}>Add Practice</Link>
+                                <Link to={`/report/${report?.id}/project/${id}/factor/scope_specifications`}>Add Practice</Link>
                             </div>
                             <div className="practices-list">
                                 <PracticesList successFactor="scope_specifications" reportId={report?.id} />
@@ -305,7 +305,7 @@ function EditProjectPractices() {
                         <div className="factor-practices">
                             <div className="factor-header">
                                 <p>Stakeholder Satisfaction: {report?.stakeholder_satisfaction}</p>
-                                <Link to={`/report/${report?.id}/factor/stakeholder_satisfaction`}>Add Practice</Link>
+                                <Link to={`/report/${report?.id}/project/${id}/factor/stakeholder_satisfaction`}>Add Practice</Link>
                             </div>
                             <div className="practices-list">
                                 <PracticesList successFactor="stakeholder_satisfaction" reportId={report?.id} />
@@ -314,7 +314,7 @@ function EditProjectPractices() {
                         <div className="factor-practices">
                             <div className="factor-header">
                                 <p>System Quality: {report?.system_quality}</p>
-                                <Link to={`/report/${report?.id}/factor/system_quality`}>Add Practice</Link>
+                                <Link to={`/report/${report?.id}/project/${id}/factor/system_quality`}>Add Practice</Link>
                             </div>
                             <div className="practices-list">
                                 <PracticesList successFactor="system_quality" reportId={report?.id} />
@@ -323,7 +323,7 @@ function EditProjectPractices() {
                         <div className="factor-practices">
                             <div className="factor-header">
                                 <p>Team Satisfaction: {report?.team_satisfaction}</p>
-                                <Link to={`/report/${report?.id}/factor/team_satisfaction`}>Add Practice</Link>
+                                <Link to={`/report/${report?.id}/project/${id}/factor/team_satisfaction`}>Add Practice</Link>
                             </div>
                             <div className="practices-list">
                                 <PracticesList successFactor="team_satisfaction" reportId={report?.id} />
