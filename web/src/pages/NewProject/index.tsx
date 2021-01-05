@@ -1,5 +1,6 @@
 import React, { useState, useEffect, MouseEvent } from 'react';
 import { useToasts } from 'react-toast-notifications';
+import LogoutButton from '../../components/LogoutButton';
 
 import { Pratices } from '../../dto/pratices';
 import { Risks } from '../../dto/risks';
@@ -68,18 +69,20 @@ function NewProject() {
                 return item.id === Number(value);
             });
             api.get(`/risks/${value}/pratices`).then(response => {
-                var usedPratices = '';
-                response.data.pratices.map((item: any, index: number) => {
-                    if(index !== response.data.pratices.length-1){
-                        usedPratices += `(${index+1}º) ${item.name}, `;
-                    } else {
-                        usedPratices += `(${index+1}º) ${item.name}.`;
-                    }                    
-                });
-                addToast(`Used pratices for ${risk[0].name}: ${usedPratices}`, {
-                    appearance: 'info',
-                    autoDismiss: false,
-                });
+                if(response.data.pratices.length > 0){
+                    var usedPratices = '';
+                    response.data.pratices.map((item: any, index: number) => {
+                        if(index !== response.data.pratices.length-1){
+                            usedPratices += `(${index+1}º) ${item.name}, `;
+                        } else {
+                            usedPratices += `(${index+1}º) ${item.name}.`;
+                        }                    
+                    });
+                    addToast(`Used pratices for ${risk[0].name}: ${usedPratices}`, {
+                        appearance: 'info',
+                        autoDismiss: false,
+                    });
+                }                
             }).catch(e => {
                 addToast('Pratices cannot be loaded.', {
                     appearance: 'error',
@@ -107,6 +110,7 @@ function NewProject() {
 
     return (
         <div id="page-new-project">
+            <LogoutButton />
             <h1 id="page-title">New Project</h1>
             <section id="content">
                 <div id="steps">
