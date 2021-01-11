@@ -61,13 +61,25 @@ function NewUser() {
                         value={password}
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.currentTarget.value)}
                     />
-                    <input
+                    <select
                         className="form-input"
-                        type="text"
-                        placeholder="Profile"
                         value={profile}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setProfile(e.currentTarget.value)}
-                    />
+                        onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setProfile(e.currentTarget.value)}
+                    >
+                        <option value="">Select a role...</option>
+                        <option value="project manager">Project Manager</option>
+                        <option value="developer">Developer</option>
+                        <option value="analyst">Analyst</option>
+                        <option value="architect or designer">Architect or Designer</option>
+                        <option value="team leader">Team Leader</option>
+                        <option value="development manager">Development Manager</option>
+                        <option value="product owner">Product Owner</option>
+                        <option value="scrum master">Scrum Master</option>
+                        <option value="agile coach">Agile Coach</option>
+                        <option value="tester">Tester</option>
+                        <option value="quality assurance manager">Quality Assurance Manager</option>
+                        <option value="project sponsor">Project Sponsor</option>
+                    </select>
                     <button id="submit" type="submit">Save</button>
                 </form>
             </section>

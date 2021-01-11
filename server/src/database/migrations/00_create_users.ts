@@ -8,7 +8,7 @@ export async function up(knex: Knex) {
         table.string('password').notNullable();
         table.enum('profile', [
             'project manager', 'developer', 'analyst', 'architect or designer', 'team leader', 'development manager',
-            'product owner', 'scrum master', 'agile coach', 'tester', 'quality assurancemanager', 'project sponsor'
+            'product owner', 'scrum master', 'agile coach', 'tester', 'quality assurance manager', 'project sponsor'
         ]).notNullable();
     });
 }
