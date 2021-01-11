@@ -3,6 +3,16 @@ import { Request, Response } from 'express';
 import db from '../database/connection';
 
 export default class RisksPracticesController {
+    async getById (req: Request, res: Response) {
+        const { id } = req.params;
+
+        const data = await db('projects_risks_practices').select('*')
+            .where('id', '=', id)
+            .first();
+
+        return res.json(data);
+    }
+
     async getByProject (req: Request, res: Response) {
         const { id } = req.params;
 
@@ -25,6 +35,21 @@ export default class RisksPracticesController {
         }  catch (err) {
             return res.status(400).json({
                 error: 'Unexpected error while removing practice from project'
+            });
+        }
+    }
+
+    async addGrade (req: Request, res: Response) {
+        const { id } = req.params;
+        const { grade } = req.body;
+        try {
+            const updated = await db('projects_risks_practices').where('id', '=', id)
+                .update({'grade': grade});
+
+            return res.json(updated);
+        }  catch (err) {
+            return res.status(400).json({
+                error: 'Unexpected error while adding grade'
             });
         }
     }
