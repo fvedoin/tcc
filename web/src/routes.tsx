@@ -13,6 +13,7 @@ import Comments from './pages/Comments';
 
 import ProjectUsers from './pages/ProjectUsers';
 import SuccessPractice from './pages/SuccessPractice';
+import ProjectSuccessFactor from './pages/ProjectSuccessFactor';
 
 //Here, the private routes are defined
 const PrivateRoute:React.FC<{component: any, path: string}> = ({ component: Component, path }) => (
@@ -37,6 +38,7 @@ const Routes = () => (
             <PrivateRoute component={FinishProject} path="/project/:id/finish" />
             <PrivateRoute component={ListProject} path="/list/project" />
             <PrivateRoute component={EditProjectPractices} path="/project/:id/practices" />
+            <PrivateRoute component={ProjectSuccessFactor} path="/project/:id/report" />
             <PrivateRoute component={ProjectUsers} path="/project/:id/users" />
             <PrivateRoute component={Comments} path="/practices/:id/comments" />
             <PrivateRoute component={SuccessPractice} path="/report/:id/project/:projectId/factor/:successFactor" />

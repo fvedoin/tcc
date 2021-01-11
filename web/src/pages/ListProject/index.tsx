@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DataTable, {IDataTableColumn} from 'react-data-table-component';
 import { FaPlus, FaSitemap, FaStop, FaUsers } from 'react-icons/fa';
+import { IoCheckmarkDoneOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 
 import LogoutButton from '../../components/LogoutButton';
@@ -17,13 +18,6 @@ function ListProject() {
         api.get('projects').then(response => {
             setProjects(response.data);
             setColumns([
-                {
-                    name: '',
-                    selector: 'id',
-                    sortable: true,
-                    width: '72px',
-                    format: (row, rowIndex) => <>{response.data[rowIndex].id}</>
-                },
                 {
                   name: 'Name',
                   selector: 'name',
@@ -72,6 +66,14 @@ function ListProject() {
                     sortable: true,
                     width: '72px',
                     format: (row, rowIndex) => <Link className="minus-button" to={`/project/${response.data[rowIndex].id}/users`}><FaUsers /></Link> 
+                }
+                ,
+                {
+                    name: '',
+                    selector: 'id',
+                    sortable: true,
+                    width: '72px',
+                    format: (row, rowIndex) => <Link className="minus-button" to={`/project/${response.data[rowIndex].id}/report`}><IoCheckmarkDoneOutline /></Link> 
                 }
             ]);
         });

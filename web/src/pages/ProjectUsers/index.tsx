@@ -4,6 +4,7 @@ import DataTable, {IDataTableColumn} from 'react-data-table-component';
 import { useToasts } from 'react-toast-notifications';
 
 import api from '../../services/api';
+import LogoutButton from '../../components/LogoutButton';
 
 function ProjectUsers() {
     const { addToast } = useToasts();
@@ -49,6 +50,7 @@ function ProjectUsers() {
 
     return (
         <div id="page-project-practices">
+            <LogoutButton />
             <h1 id="page-title">Project details</h1>
             <div className="content">
                 <DataTable

@@ -46,7 +46,9 @@ routes.post('/projects/:id/finish', finalReportController.create);
 routes.get('/projects/:id/report', finalReportController.getByProject);
 
 //Search practices in the project
+routes.get('/relation/:id', risksPracticesController.getById);
 routes.put('/relation/:id/remove', risksPracticesController.remove);
+routes.put('/relation/:id/grade', risksPracticesController.addGrade);
 
 //Search comments in the relation
 routes.get('/relation/:id/comments', commentsController.getByRelation);
