@@ -42,13 +42,14 @@ function EvaluatePratice() {
         <div id="page-project-practices">
             <LogoutButton />
             <h1 id="page-title">Evaluate Pratice</h1>
-            <section id="content" onSubmit={handleSubmit}>
-                <form>
+            <div id="content" >
+                <h2>Rate the practice according to its performance</h2>
+                <form onSubmit={handleSubmit}>
                     <label>Pratice grade: {grade}</label>
                     <input className="slider" type="range" min={0} max={10} value={grade} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setGrade(Number(e.currentTarget.value))} />
                     <button type="submit" id="submit">Save</button>
                 </form>
-            </section>
+            </div>
         </div>
     );
 }

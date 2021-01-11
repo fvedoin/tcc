@@ -46,6 +46,7 @@ function SuccessPractice() {
         <div id="page-list-project">
             <h1 id="page-title">Add Practice</h1>
             <div id="content">
+                <h2>Select one of the practices that<br/>were used in the project</h2>
                 <form onSubmit={handleSubmit}>
                     <select className="form-input" onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setPracticeId(e.currentTarget.value)}>
                         <option value="">Select a practice</option>

@@ -72,7 +72,7 @@ function ProjectUsers() {
     return (
         <div id="page-project-practices">
             <LogoutButton />
-            <h1 id="page-title">Project details</h1>
+            <h1 id="page-title">Project Members</h1>
             <div className="content">
                 <DataTable
                         title="Project users"
@@ -115,14 +115,15 @@ function ProjectUsers() {
                     />
             </div>
             <div id="content-below">
+                <h2>Type the members emails separated by ","</h2>
                 <form onSubmit={handleSubmit}>
                     <input
-                            className="form-input"
-                            type="text"
-                            placeholder="Team"
-                            value={members}
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMembers(e.currentTarget.value)}
-                        />
+                        className="form-input"
+                        type="text"
+                        placeholder="Team"
+                        value={members}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMembers(e.currentTarget.value)}
+                    />
                     <button id="submit" type="submit">Add</button>
                 </form>
             </div>

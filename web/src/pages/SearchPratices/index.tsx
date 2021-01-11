@@ -65,7 +65,7 @@ function SearchPratices() {
             <h1 id="page-title">Search Pratices</h1>
             <section id="content">
                 <form onSubmit={handleSubmit}> 
-                    <h2>General Infos</h2>
+                    <h2>Filters</h2>
                     <select
                         className="form-input"
                         value={type}

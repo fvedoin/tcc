@@ -175,6 +175,7 @@ function EditProjectPractices() {
                     />
             </div>
             <div id="content-below">
+                <h2>Add a practice to the project</h2>
                 <div className="select-group">
                     <form onSubmit={handleSubmit}>
                         <select className="first-select form-input" onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setRiskId(e.currentTarget.value)}>

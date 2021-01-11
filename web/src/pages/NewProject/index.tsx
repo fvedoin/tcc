@@ -170,8 +170,18 @@ function NewProject() {
                                 type="text"
                                 placeholder="Team"
                                 value={team}
+                                style={{
+                                    marginBottom: 8
+                                }}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTeam(e.currentTarget.value)}
                             />
+                            <span style={{
+                                color: '#85a5b5',
+                                fontFamily: 'Roboto',
+                                alignSelf: 'flex-end',
+                                marginTop: 0,
+                                marginBottom: 24
+                            }}>Type the members emails separated by ","</span>
                         </>
                     ) : (
                         <>

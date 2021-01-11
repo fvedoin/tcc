@@ -1,6 +1,4 @@
-.logout-button {
-    align-self: flex-end;
-    justify-self: flex-start;
+.menu-item {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,4 +10,12 @@
     border: 3px solid var(--color-primary);
     color: var(--color-primary);
     background: #fff;
+}
+
+.nav-bar {
+    display: flex;
+    align-self: flex-end;
+    justify-self: flex-start;
+    align-items: center;
+    justify-content: flex-end;
 }
