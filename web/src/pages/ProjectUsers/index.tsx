@@ -12,6 +12,8 @@ function ProjectUsers() {
 
     const [columns, setColumns] = useState<IDataTableColumn[]>([]);
  
+    const [members, setMembers] = useState('');
+    const [reload, setReload] = useState(false);
     const [users, setUsers] = useState<any[]>([]);
 
     useEffect(() => {
@@ -46,7 +48,26 @@ function ProjectUsers() {
                 autoDismiss: true,
             });
         });
-    }, []);
+    }, [reload]);
+
+    async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+
+        await api.put(`projects/${id}/members`, {
+            members: members.trim().split(',')
+        }).then(response => {
+            addToast('Member(s) added to the project successfully!', {
+                appearance: 'success',
+                autoDismiss: true,
+            });
+            setReload(!reload);
+        }).catch(e => {
+            addToast('Member(s) cannot be added to the project.', {
+                appearance: 'error',
+                autoDismiss: true,
+            });
+        });
+    }
 
     return (
         <div id="page-project-practices">
@@ -92,6 +113,18 @@ function ProjectUsers() {
                             }
                         }}
                     />
+            </div>
+            <div id="content-below">
+                <form onSubmit={handleSubmit}>
+                    <input
+                            className="form-input"
+                            type="text"
+                            placeholder="Team"
+                            value={members}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMembers(e.currentTarget.value)}
+                        />
+                    <button id="submit" type="submit">Add</button>
+                </form>
             </div>
         </div>
     );

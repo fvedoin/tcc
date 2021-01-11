@@ -31,6 +31,7 @@ routes.post('/login', sessionController.login);
 //Routes for projects
 routes.post('/projects', projectsController.create);
 routes.get('/projects', projectsController.index);
+routes.put('/projects/:id/members', projectsController.addMembers);
 
 //Search project by id
 routes.get('/projects/:id/practices', practicesController.getByProject);

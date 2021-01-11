@@ -176,23 +176,23 @@ function EditProjectPractices() {
             </div>
             <div id="content-below">
                 <div className="select-group">
-                        <form onSubmit={handleSubmit}>
-                            <select className="first-select form-input" onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setRiskId(e.currentTarget.value)}>
-                                <option value="">Select a risk factor</option>
-                                {risks.map(risk => (
-                                    <option key={risk.id} value={risk.id}>{risk.name}</option>
-                                ))}
-                            </select>
-                            <select className="form-input" onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setPracticeId(e.currentTarget.value)}>
-                                <option value="">Select a practice</option>
-                                {practices.map(practice => (
-                                    <option key={practice.id} value={practice.id}>{practice.name.charAt(0).toUpperCase() + practice.name.slice(1)}</option>
-                                ))}
-                                <option value="">Select a practice</option>                  
-                            </select>
-                            <button id="submit" type="submit">Add</button>
-                        </form>
-                    </div>
+                    <form onSubmit={handleSubmit}>
+                        <select className="first-select form-input" onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setRiskId(e.currentTarget.value)}>
+                            <option value="">Select a risk factor</option>
+                            {risks.map(risk => (
+                                <option key={risk.id} value={risk.id}>{risk.name}</option>
+                            ))}
+                        </select>
+                        <select className="form-input" onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setPracticeId(e.currentTarget.value)}>
+                            <option value="">Select a practice</option>
+                            {practices.map(practice => (
+                                <option key={practice.id} value={practice.id}>{practice.name.charAt(0).toUpperCase() + practice.name.slice(1)}</option>
+                            ))}
+                            <option value="">Select a practice</option>                  
+                        </select>
+                        <button id="submit" type="submit">Add</button>
+                    </form>
+                </div>
             </div>
         </div>
     );

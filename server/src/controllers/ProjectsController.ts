@@ -89,4 +89,32 @@ export default class ProjectsController {
         }
     }
 
+    async addMembers (req: Request, res: Response) {
+        const { members } = req.body;
+        console.log(members)
+        const { id } = req.params;
+        let project_users: ProjectUser[] = [];
+
+        const trx = await db.transaction();
+
+        try {
+            for await (let email of members) {
+                var user = await trx('users').select('id').where('email', '=', email.trim()).first();
+                project_users.push({user_id: user.id, project_id: Number (id)});
+            };
+
+            await trx('projects_users').insert(project_users);
+
+            await trx.commit();
+
+            return res.status(201).send();
+        } catch (err) {
+            console.log(err);
+            await trx.rollback();
+            return res.status(400).json({
+                error: 'Unexpected error while adding members to the project'
+            });
+        }
+    }
+
 }
