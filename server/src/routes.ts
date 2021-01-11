@@ -34,6 +34,7 @@ routes.get('/projects', projectsController.index);
 routes.put('/projects/:id/members', projectsController.addMembers);
 
 //Search project by id
+routes.get('/practices/search', practicesController.getByRiskAndProject);
 routes.get('/projects/:id/practices', practicesController.getByProject);
 routes.get('/projects/:id/users', usersController.getByProject);
 

@@ -31,4 +31,20 @@ export default class PracticesController {
 
         return res.json({ practices });
     }
+
+    async getByRiskAndProject (req: Request, res: Response) {
+        const { riskId, projectDuration, projectType } = req.query;
+        
+        const practices = await db('practices').count('practices.name', {as: 'occurrence'})
+            .select('practices.name')
+            .join('projects_risks_practices', 'projects_risks_practices.practice_id', 'practices.id')
+            .join('projects', 'projects.id', 'projects_risks_practices.project_id')
+            .where('projects_risks_practices.risk_id', '=', Number(riskId))
+            .where('projects.duration', '=', String(projectDuration))
+            .where('projects.type', '=', String(projectType))
+            .groupBy('practices.name')
+            .orderByRaw('occurrence desc');
+
+        return res.json({ practices });
+    }
 }
