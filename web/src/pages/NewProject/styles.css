@@ -97,6 +97,35 @@ form {
     align-items: center;
 }
 
-.first-select {
-    margin-top: -36px;
+
+
+.css-g1d714-ValueContainer{
+    width: 456px;
+    font-size: 24px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    border-radius: 8px;
+    font-size: 24px;
+    background: var(--color-input-background);
+    min-width: 400px;
+    padding: 16px 20px;
+    border: 1px solid var(--color-input-border);
+}
+
+.css-g1d714-ValueContainer > input {
+    width: 100%;
+}
+
+.css-2b097c-container{
+    margin-bottom: 24px;
+    
+}
+
+.css-26l3qy-menu {
+    font-size: 24px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    z-index: 100000 !important;
 }

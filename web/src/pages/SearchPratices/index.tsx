@@ -20,6 +20,11 @@ const columns: IDataTableColumn[] = [
         name: 'Practice',
         selector: 'name',
         sortable: true
+    },
+    {
+        name: 'Grade',
+        selector: 'grade',
+        sortable: true
     }
 ];
 
@@ -62,7 +67,7 @@ function SearchPratices() {
     return (
         <div id="page-new-project">
             <LogoutButton />
-            <h1 id="page-title">Search Pratices</h1>
+            <h1 id="page-title">Search Practices</h1>
             <section id="content">
                 <form onSubmit={handleSubmit}> 
                     <h2>Filters</h2>

@@ -36,7 +36,7 @@ export default class PracticesController {
         const { riskId, projectDuration, projectType } = req.query;
         
         const practices = await db('practices').count('practices.name', {as: 'occurrence'})
-            .select('practices.name')
+            .select('practices.name', db.raw('ROUND(AVG(projects_risks_practices.grade),2) AS grade'))
             .join('projects_risks_practices', 'projects_risks_practices.practice_id', 'practices.id')
             .join('projects', 'projects.id', 'projects_risks_practices.project_id')
             .where('projects_risks_practices.risk_id', '=', Number(riskId))
